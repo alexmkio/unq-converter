@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+  }
+
+  .label {
+    @apply flex flex-col mt-8 text-gray-700;
+  }
+
+  .input {
+    @apply bg-gray-100 rounded-md mt-1 px-4 py-2 border-transparent hover:outline-none hover:ring-1 hover:ring-gray-300 hover:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:bg-white;
+  }
+}
