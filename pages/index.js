@@ -36,6 +36,7 @@ export default function Home() {
     setUrl('')
     setCustomer('')
     setTheme('')
+    setConvertedUrl('')
   }
 
   const copyToClipboard = () => {
