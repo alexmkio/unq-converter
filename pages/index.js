@@ -65,7 +65,7 @@ export default function Home() {
           </label>
 
           <div className='sm:flex justify-between'>
-            <label className='label sm:w-5/12'>
+            <label className='label sm:w-5/12 mt-8'>
               Customer:
               <input
                 className='input'
@@ -75,7 +75,7 @@ export default function Home() {
               />
             </label>
 
-            <label className='label sm:w-5/12'>
+            <label className='label sm:w-5/12 mt-8'>
               Theme:
               <input
                 className='input'
