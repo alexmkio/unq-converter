@@ -12,6 +12,6 @@
   }
 
   .input {
-    @apply bg-gray-100 rounded-md mt-1 px-4 py-2 border-transparent hover:outline-none hover:ring-1 hover:ring-gray-300 hover:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:bg-white;
+    @apply bg-gray-200 rounded-md mt-1 px-4 py-2 border-transparent hover:outline-none hover:ring-1 hover:ring-gray-400 hover:bg-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:bg-white;
   }
 }
