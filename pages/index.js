@@ -22,7 +22,7 @@ export default function Home() {
       if (!splitUrl[splitUrl.length - 1].length) {
         splitUrl.pop()
       }
-      let withEdit = [...splitUrl, 'edit'].join('/')
+      let withEdit = `https://${splitUrl[2]}/#/${splitUrl[splitUrl.length - 2]}/${splitUrl[splitUrl.length - 1]}/edit`
       return withEdit.replace('x.unqork.io', '.unqork.io').replace('display', 'form')
     }
   }
