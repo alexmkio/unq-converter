@@ -1,34 +1,23 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Unqork Converter
 
-## Getting Started
+Unqork Converter is an application designed to help the software engineers on the Style team at Unqork convert urls from one form to another.
 
-First, run the development server:
+The application is deployed [here](https://unqork-converter.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Technologies Used
+This application is written in JavaScript utilizing the [Next.js](https://nextjs.org/) framework. [Tailwind CSS](https://tailwindcss.com/) is utilized for styling.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+1. If the url contains form and edit then an `x` should be appended to the environment, `form` should be changed to `display`, and `edit` should be removed
+   - `https://training.unqork.io/#/form/61fa2ba2276bfe7377a371a3/edit` should become `https://trainingx.unqork.io/#/display/61fa2ba2276bfe7377a371a3`
+2. If a CUSTOMER and THEME are supplied then `?&style=THEME&remoteRootCustomer=http://localhost:3002/CUSTOMER/` should be added when converting to a display link
+   - `https://training.unqork.io/#/form/61fa2ba2276bfe7377a371a3/edit` should become `https://trainingx.unqork.io/?&style=THEME&remoteRootCustomer=http://localhost:3002/CUSTOMER/#/display/61fa2ba2276bfe7377a371a3`
+3. If the url contains display then the trailing `x` should be removed from the environment, `display` should be changed to `form`, and `edit` should be added to the end
+   - `https://trainingx.unqork.io/#/display/61fa2ba2276bfe7377a371a3` becomes `https://training.unqork.io/#/form/61fa2ba2276bfe7377a371a3/edit`
+   - `https://trainingx.unqork.io/?&style=THEME&remoteRootCustomer=http://localhost:3002/CUSTOMER/#/display/61fa2ba2276bfe7377a371a3` also becomes `https://training.unqork.io/#/form/61fa2ba2276bfe7377a371a3/edit`
+4. If it's a workflow then `workflow` should not change to `display`
+   - `https://training.unqork.io/#/workflow/620c80000c447a19b157c29c/edit` should become `https://trainingx.unqork.io/#/workflow/620c80000c447a19b157c29c`
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contributors
+This application was built by [Alex Kio](https://github.com/alexmkio/); a Front End Engineering at [Rightpoint](https://www.rightpoint.com/).
