@@ -1,6 +1,6 @@
 # Unqork Converter
 
-Unqork Converter is an application designed to help the software engineers on the Style team at Unqork convert urls from one form to another.
+Unqork Converter is an application designed to help the software engineers on the Styles team at Unqork convert urls from one form to another.
 
 The application is deployed [here](https://unqork-converter.vercel.app/)
 
