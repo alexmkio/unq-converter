@@ -20,4 +20,4 @@ This application is written in JavaScript utilizing the [Next.js](https://nextjs
    - `https://training.unqork.io/#/workflow/620c80000c447a19b157c29c/edit` should become `https://trainingx.unqork.io/#/workflow/620c80000c447a19b157c29c`
 
 ## Contributors
-This application was built by [Alex Kio](https://github.com/alexmkio/); a Front End Engineering at [Rightpoint](https://www.rightpoint.com/).
+This application was built by [Alex Kio](https://github.com/alexmkio/); a Front End Engineer at [Rightpoint](https://www.rightpoint.com/).
