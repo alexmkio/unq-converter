@@ -36,7 +36,19 @@ export default function Home() {
     copyToClipboard(convertedUrl)
   }
 
+  const handleUrl = (event) => {
+    setUrl(event.target.value)
+    findTheme(event.target.value)
+    if (matchingCustomer) findCustomer(event.target.value)
+  }
+
+  const handleCustomerChange = (event) => {
+    if (matchingTheme) setTheme(event.target.value)
+    setCustomer(event.target.value)
+  }
+
   const handleMatchingCustomer = () => {
+    !matchingCustomer && url.length ? findCustomer(url) : setCustomer('')
     setMatchingCustomer(!matchingCustomer)
   }
 
@@ -45,11 +57,41 @@ export default function Home() {
     setMatchingTheme(!matchingTheme)
   }
 
+  const findCustomer = (url) => {
+    let environment = url
+    if (environment.includes('https://')) {
+      environment = url.split('https://')[1]
+    }
+    if (environment.includes('.')) {
+      environment = environment.split('.')[0]
+    }
+    if (environment.includes('-staging')) {
+      setCustomer(environment.split('-staging')[0])
+      if (matchingTheme) setTheme(environment.split('-staging')[0])
+    } else if (environment.split('')[environment.split('').length - 1] === 'x') {
+      let splitEnvironment = environment.split('')
+      splitEnvironment.pop()
+      setCustomer(splitEnvironment.join(''))
+      if (matchingTheme) setTheme(splitEnvironment.join(''))
+    } else {
+      setCustomer(environment)
+      if (matchingTheme) setTheme(environment)
+    }
+  }
+
+  const findTheme = (url) => {
+    if (url.includes('style=')) {
+      setTheme(url.split('style=')[1].split(/[#&]/)[0])
+    }
+  }
+
   const clearForm = () => {
     setUrl('')
     setCustomer('')
     setTheme('')
     setConvertedUrl('')
+    setMatchingCustomer(false)
+    setMatchingTheme(false)
   }
 
   const copyToClipboard = (url) => {
@@ -72,7 +114,7 @@ export default function Home() {
               className='input'
               type="text"
               value={url}
-              onChange={(event)=> setUrl(event.target.value)}
+              onChange={(event)=> handleUrl(event)}
               placeholder="Required"
               required
             />
@@ -85,7 +127,7 @@ export default function Home() {
                 className='input'
                 type="text"
                 value={customer}
-                onChange={(event)=> setCustomer(event.target.value)}
+                onChange={(event)=> handleCustomerChange(event)}
               />
             </label>
 
