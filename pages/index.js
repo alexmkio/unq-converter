@@ -90,7 +90,7 @@ export default function Home() {
           </div>
 
           <div className='mt-8 flex justify-between'>
-            <button onClick={clearForm} className='btn-primary'>Clear form</button>
+            <button type="button" onClick={clearForm} className='btn-primary'>Clear form</button>
             <input type="submit" value="Convert" className='btn-primary' />
           </div>
         </form>
