@@ -10,10 +10,12 @@ export default function Home() {
   const [matchingTheme, setMatchingTheme] = useState(false)
 
   const convertUrl = () => {
-    let splitUrl = url.split('/')
-    if (splitUrl[splitUrl.length - 1] === 'edit' && customer && theme) {
+    let splitUrl = removeProtocol(url).split('/')
+    if (splitUrl[2] === 'workflow') {
+      return `${splitUrl[0]}/workspaces`.replace('x.unqork.io', '.unqork.io')
+    } else if (splitUrl[splitUrl.length - 1] === 'edit' && customer && theme) {
       splitUrl.pop()
-      splitUrl.splice(3, 1, `?&style=${theme}&remoteRootCustomer=http://localhost:3002/${customer}/#`)
+      splitUrl.splice(1, 1, `?&style=${theme}&remoteRootCustomer=http://localhost:3002/${customer}/#`)
       let withoutEdit = splitUrl.join('/')
       return withoutEdit.replace('.unqork.io', 'x.unqork.io').replace('form', 'display')
     } else if (splitUrl[splitUrl.length - 1] === 'edit') {
@@ -24,7 +26,7 @@ export default function Home() {
       if (!splitUrl[splitUrl.length - 1].length) {
         splitUrl.pop()
       }
-      let withEdit = `https://${splitUrl[2]}/#/${splitUrl[splitUrl.length - 2]}/${splitUrl[splitUrl.length - 1]}/edit`
+      let withEdit = `${splitUrl[0]}/#/${splitUrl[splitUrl.length - 2]}/${splitUrl[splitUrl.length - 1]}/edit`
       return withEdit.replace('x.unqork.io', '.unqork.io').replace('display', 'form')
     }
   }
@@ -58,10 +60,7 @@ export default function Home() {
   }
 
   const findCustomer = (url) => {
-    let environment = url
-    if (environment.includes('https://')) {
-      environment = url.split('https://')[1]
-    }
+    let environment = removeProtocol(url)
     if (environment.includes('.')) {
       environment = environment.split('.')[0]
     }
@@ -96,6 +95,13 @@ export default function Home() {
 
   const copyToClipboard = (url) => {
     navigator.clipboard.writeText(url)
+  }
+
+  const removeProtocol = (url) => {
+    if (url.includes('https://')) {
+      return url.split('https://')[1]
+    }
+    return url
   }
 
   return (
