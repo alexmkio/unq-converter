@@ -6,6 +6,8 @@ export default function Home() {
   const [customer, setCustomer] = useState('')
   const [theme, setTheme] = useState('')
   const [convertedUrl, setConvertedUrl] = useState('')
+  const [matchingCustomer, setMatchingCustomer] = useState(false)
+  const [matchingTheme, setMatchingTheme] = useState(false)
 
   const convertUrl = () => {
     let splitUrl = url.split('/')
@@ -32,6 +34,15 @@ export default function Home() {
     let convertedUrl = convertUrl()
     setConvertedUrl(convertedUrl)
     copyToClipboard(convertedUrl)
+  }
+
+  const handleMatchingCustomer = () => {
+    setMatchingCustomer(!matchingCustomer)
+  }
+
+  const handleMatchingTheme = () => {
+    !matchingTheme ? setTheme(customer) : setTheme('')
+    setMatchingTheme(!matchingTheme)
   }
 
   const clearForm = () => {
@@ -85,6 +96,28 @@ export default function Home() {
                 type="text"
                 value={theme}
                 onChange={(event)=> setTheme(event.target.value)}
+              />
+            </label>
+          </div>
+
+          <div className='sm:flex justify-between'>
+            <label className='sm:w-5/12 flex items-center'>
+              Same as Environment
+              <input
+                className='mr-2 order-first'
+                type="checkbox"
+                checked={matchingCustomer}
+                onChange={handleMatchingCustomer}
+              />
+            </label>
+
+            <label className='sm:w-5/12 flex items-center'>
+              Same as Customer
+              <input
+                className='mr-2 order-first'
+                type="checkbox"
+                checked={matchingTheme}
+                onChange={handleMatchingTheme}
               />
             </label>
           </div>
